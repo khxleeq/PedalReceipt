@@ -33,7 +33,7 @@ const updateReceipt = asyncHandler(async (req, res) => {
     const receipt = await Receipt.findById(req.params.id);
 
     if (!receipt) {
-        res.status(400).json({ message: `Receipt not found` });
+        res.status(404).json({ message: `Receipt not found, please try again` });
 }
 const updateRec = await Receipt.findByIdAndUpdate(
     req.params.id,
@@ -51,7 +51,7 @@ const updateRec = await Receipt.findByIdAndUpdate(
 const deleteReceipt = asyncHandler(async (req, res) => {
     const receipt = await Receipt.findById(req.params.id);
     if (!receipt) {
-      res.status(400).json({ message: `Receipt not found` });
+      res.status(404).json({ message: `Receipt not found, please try again` });
     }
   
     await receipt.remove();
